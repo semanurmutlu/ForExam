@@ -12,10 +12,13 @@ namespace CRUDProccess.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Context _context ; 
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger,Context context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -23,8 +26,24 @@ namespace CRUDProccess.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Create(Student student)
         {
+            await _context.AddAsync(student);//girilen parametreyi student olarak alıyorum 
+            await _context.SaveChangesAsync();//aldığım parametreyi kaydediyorum
+            return RedirectToAction(nameof(Index));//kaydettikten sonra index sayfasına geri gönderiyoruz.
+        }
+
+        public IActionResult Student(int? Id)
+        {
+            Student student;
+            if (Id.HasValue)
+            {
+                student = _context.Students.Find(Id);
+            }
+            else
+            {
+                student = new Student();
+            }
             return View();
         }
 

@@ -1,0 +1,40 @@
+﻿@model CRUDProccess.Models.Student;
+@{
+    ViewData["Title"] = "Student";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Create" autocomplete="off">
+    <div class="form-group">
+        <label>Ad: </label>
+        <input type="hidden" asp-for="Id" />
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Soyad: </label>
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>TC: </label>
+        <input type="text" asp-for="TC" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Adres: </label>
+        <input type="text" asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Telefon: </label>
+        <input type="text" asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Eğitim: </label>
+        <input type="text" asp-for="Education" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Başarı Durumu: </label>
+        <input type="text" asp-for="Status" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Ekle</button>
+    </div>
+</form>
