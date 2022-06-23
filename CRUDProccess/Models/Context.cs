@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CRUDProccess.Models
     {
         //Nuget olarak entity yükledim sonra :DbContext ekleme yapıyorum
 
-        public Context(DbContextOptions<Context>options):base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
 
         }
