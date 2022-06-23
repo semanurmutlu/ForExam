@@ -26,6 +26,13 @@ namespace CRUDProccess.Controllers
             var list = _context.Students.ToList();
             return View(list);
         }
+        public async Task<IActionResult> Delete(int Id)
+        {
+            var student =await _context.Students.FindAsync(Id);
+            _context.Remove(student);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
         public async Task<IActionResult> Create(Student student)
         {

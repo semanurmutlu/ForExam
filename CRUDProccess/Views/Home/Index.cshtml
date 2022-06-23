@@ -28,7 +28,9 @@
              <td>@item.Phone</td>
              <td>@item.Education</td>
              <td>@item.Status</td>
-             
+             <td>
+                 <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+             </td>
          </tr>
 	}
     </tbody>
