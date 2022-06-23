@@ -36,7 +36,14 @@ namespace CRUDProccess.Controllers
 
         public async Task<IActionResult> Create(Student student)
         {
-            await _context.AddAsync(student);//girilen parametreyi student olarak alıyorum 
+            if (student.Id==0)
+            {
+                await _context.AddAsync(student);//girilen parametreyi student olarak alıyorum 
+            }
+            else
+            {
+                _context.Update(student);
+            }
             await _context.SaveChangesAsync();//aldığım parametreyi kaydediyorum
             return RedirectToAction(nameof(Index));//kaydettikten sonra index sayfasına geri gönderiyoruz.
         }
@@ -54,7 +61,7 @@ namespace CRUDProccess.Controllers
             {
                 student = new Student();
             }
-            return View();
+            return View(student);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
