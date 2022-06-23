@@ -23,7 +23,8 @@ namespace CRUDProccess.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var list = _context.Students.ToList();
+            return View(list);
         }
 
         public async Task<IActionResult> Create(Student student)
@@ -32,6 +33,8 @@ namespace CRUDProccess.Controllers
             await _context.SaveChangesAsync();//aldığım parametreyi kaydediyorum
             return RedirectToAction(nameof(Index));//kaydettikten sonra index sayfasına geri gönderiyoruz.
         }
+
+
 
         public IActionResult Student(int? Id)
         {
